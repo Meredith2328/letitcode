@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PyTorch 面试练习</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-icon">&lt;/&gt;</span>
+          <span class="brand-title">PyTorch 面试练习</span>
+        </div>
+        <div class="top-actions">
+          <button id="feedbackBtn" class="btn btn-feedback" title="反馈编辑">🔧 反馈</button>
+          <button id="testBtn" class="btn btn-secondary">测试</button>
+          <button id="submitBtn" class="btn btn-primary">提交</button>
+        </div>
+      </header>
+
+      <main id="workspace" class="workspace">
+        <section id="leftPanel" class="left-panel card">
+          <div class="problem-switcher">
+            <button id="prevProblemBtn" class="icon-btn" title="上一题">&#9664;</button>
+            <select id="problemSelect"></select>
+            <button id="nextProblemBtn" class="icon-btn" title="下一题">&#9654;</button>
+          </div>
+
+          <div class="problem-head">
+            <h1 id="problemTitle"></h1>
+            <div id="problemMeta" class="problem-meta"></div>
+          </div>
+
+          <div class="left-tabs">
+            <button id="tabProblemBtn" class="tab-btn active">题目</button>
+            <button id="tabSolutionBtn" class="tab-btn">题解</button>
+          </div>
+
+          <article id="problemDescription" class="problem-description"></article>
+          <article id="solutionDescription" class="problem-description hidden"></article>
+
+          <footer class="left-footer">
+            <button id="favoriteBtn" class="btn btn-fav">☆ 收藏</button>
+            <label class="fav-filter">
+              <input id="favoritesOnlyChk" type="checkbox" />
+              仅看收藏
+            </label>
+          </footer>
+        </section>
+
+        <div id="splitterVertical" class="splitter splitter-vertical" aria-hidden="true"></div>
+
+        <section id="rightPanel" class="right-panel">
+          <div class="editor-card card">
+            <div class="editor-header">
+              <div class="editor-title">代码 / Python3</div>
+            </div>
+            <div id="editor"></div>
+            <textarea id="plainEditor"></textarea>
+          </div>
+
+          <div id="splitterHorizontal" class="splitter splitter-horizontal" aria-hidden="true"></div>
+
+          <div class="result-card card">
+            <div class="result-header">测试结果</div>
+            <div class="custom-box">
+              <label for="customCasesInput">自定义测试用例（JSON 数组，最多 5 个）</label>
+              <textarea id="customCasesInput"></textarea>
+            </div>
+            <pre id="resultOutput"></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="反馈编辑">
+      <div class="modal-mask" data-close-feedback="1"></div>
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="modal-title">🔧 反馈编辑</div>
+          <button id="feedbackCloseBtn" class="icon-btn" title="关闭">×</button>
+        </div>
+
+        <div class="modal-tabs">
+          <button id="feedbackTabProblemBtn" class="tab-btn active">题目</button>
+          <button id="feedbackTabSolutionBtn" class="tab-btn">题解</button>
+        </div>
+
+        <div id="feedbackProblemPanel" class="modal-panel">
+          <label for="feedbackProblemDescriptionInput">题目描述（Markdown）</label>
+          <textarea id="feedbackProblemDescriptionInput" class="modal-textarea modal-textarea-lg"></textarea>
+
+          <label for="feedbackStarterCodeInput">起始代码</label>
+          <textarea id="feedbackStarterCodeInput" class="modal-textarea modal-textarea-code"></textarea>
+        </div>
+
+        <div id="feedbackSolutionPanel" class="modal-panel hidden">
+          <label for="feedbackSolutionExplanationInput">题解讲解（Markdown）</label>
+          <textarea id="feedbackSolutionExplanationInput" class="modal-textarea modal-textarea-lg"></textarea>
+
+          <label for="feedbackSolutionCodeInput">题解参考代码</label>
+          <textarea id="feedbackSolutionCodeInput" class="modal-textarea modal-textarea-code"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <div id="feedbackStatus" class="modal-status"></div>
+          <div class="modal-actions">
+            <button id="feedbackCancelBtn" class="btn btn-secondary">取消</button>
+            <button id="feedbackSaveBtn" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
