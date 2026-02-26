@@ -1,5 +1,7 @@
 # PyTorch 面试练习网页（LeetCode 风格）
 
+![main](./pics/main.png)
+
 本项目是一个本地可运行的 PyTorch 练习工具，支持：
 
 - 左侧题目区（题面、难度、标签）
